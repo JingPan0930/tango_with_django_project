@@ -1,26 +1,22 @@
-﻿{%  extends "rango/base.html" %}
-{% load staticfiles %}
+{% extends 'rango/base.html' %}
 
-{% block content %}
-{%  if category %}
-    <div>
-        <h2>{{  category.name }}</h2>
-        {%  if pages %}
-            <ul>
-            {%  for page in pages %}
-                <li><a href="{{  page.url }}">{{ page.title }}</a></li>
-            {%  endfor %}
-            </ul>
-            <img src="{% static "images/happy_rango.jpg" %}" alt="Picture of happy Rango" /><br />
-        {% else %}
-            <p><strong>No pages currently in category.</strong></p>
-            <img src="{% static "images/sad_rango.jpg" %}" alt="Picture of sad Rango" /><br />
-        {% endif %}
-    {%  else %}
-        <p>The specified category does not exist!</p>
-        <img src="{% static "images/sad_rango.jpg" %}" alt="Picture of sad Rango" /><br />
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+<h1>{{ category_name }}</h1>
+{% if pages %}
+    <ul>
+        {% for page in pages %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <strong>No pages currently in category.</strong>
     {% endif %}
-    <p><a href="/rango/add_page/{{ category.slug }}/">Add page</a></p>
-    <p><a href="/rango/">Return to Index</a></p>
-    </div>
+
+    {% if user.is_authenticated  %}
+        <a href="/rango/category/{{ category_name_url }}/add_page/">Add Page</a>
+    {% endif %}
+</div>
 {% endblock %}

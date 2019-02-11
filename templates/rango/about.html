@@ -1,11 +1,14 @@
-﻿{% extends "rango/base.html"%}
+{% extends 'rango/base.html' %}
 
-{% load staticfiles %}
+{% load static %}  <!-- informs django's template system we will be using static media -->
 
-{% block content %}
+{% block title %}{{ "About" }}{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>About Rango</h1>
+    This is <strong>Rango's about page from Jing Pan</strong>.<br />
+
     
-    <div>
-        <p>This is the Rango Application from Pan！</p>
-    </div>
-    <a href="/rango/">Return to Index</a>
+</div>
 {% endblock %}

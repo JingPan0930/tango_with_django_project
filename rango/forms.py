@@ -10,7 +10,7 @@ class CategoryForm(forms.ModelForm):
       slug = forms.CharField(widget=forms.HiddenInput(), required=False)
       class Meta:
             model = Category
-            fields = ('name',)
+            fields = ('name',)
 class PageForm(forms.ModelForm):
       title = forms.CharField(max_length=128,
                                            help_text="Please enter the title of the page.")
@@ -25,7 +25,7 @@ class PageForm(forms.ModelForm):
                 url = 'http://' + url
                 cleaned_data['url'] = url
                 return cleaned_data
-      class Meta:
+      class Meta:
            model = Page
            exclude = ('category',)
 
