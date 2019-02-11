@@ -35,7 +35,7 @@ def populate():
                   "Other Frameworks": {"pages": other_pages} }
 
       for cat, cat_data in cats.items():
-            c = add_cat(cat)
+            c = add_cat('Python', views=128, likes=64)
             for p in cat_data["pages"]:
                   add_page(c, p["title"], p["url"])
 
