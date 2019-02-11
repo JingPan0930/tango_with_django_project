@@ -1,0 +1,24 @@
+﻿{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Add a Category</h1>
+<div>
+    <a href="/rango/category/{{category.slug}}/add_page/">Add Page</a> <br/>
+    <form id="category_form" method="post" action="/rango/add_category/">
+        {% csrf_token %}
+{#        hidden is necessary so that the data isn't lost since HTTP is #}
+{#        stateless #}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" name="submit" value="Create Category" />
+    </form>
+    
+</div>
+{% endblock %}
