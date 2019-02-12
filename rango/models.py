@@ -14,7 +14,7 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name_plural = "categories"
+        verbose_name_plural = "Category"
 
     def __str__(self):
         return self.name

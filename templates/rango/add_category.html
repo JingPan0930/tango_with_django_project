@@ -1,29 +1,26 @@
 {% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		Add a New Category
+	{% endblock %}
+	
+	{% block body_block %}
+		<div>
+			<h1>Add a New Category</h1>
+			<form role="form" id="category_form" method="post" action="{% url 'add_category' %}">
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+	                {{ hidden }}
+	            {% endfor %}
 
-{% load static %}  <!-- informs django's template system we will be using static media -->
+	            {% for field in form.visible_fields %}
+	                {{ field.errors }}
+	                {{ field.help_text }}
+	                {{ field }}
+	            {% endfor %}
 
-{% block title %}{{ "Add a Category" }}{% endblock %}
-
-{% block body_block %}
-<div class="hero-unit">
-    <h1>Add a Category</h1>
-    <!-- the csrf_token is a Cross-Site Request Forgery token
-    it helps protect and secure the HTTP post action -->
-    <form id="category_form" method="post" action="/rango/add_category/">
-
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text}}
-            {{ field }}
-        {% endfor %}
-
-        <input type="submit" name="submit" value="Create Category" />
-    </form>
-    <a href="/rango/category/{{category.slug}}/add_-page/">Add A New Page</a> <br/>
-</div>
-{% endblock %}
+				<button class="btn btn-primary" type="submit" name="submit">Create Category</button>
+	        </form>
+		</div>	
+        
+	{% endblock %}
