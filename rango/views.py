@@ -2,7 +2,11 @@ from django.shortcuts import render
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
 from rango.forms import UserForm, UserProfileForm
-
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 def index(request):
  
     print("views.index called by urls.py")
@@ -115,3 +119,48 @@ def register(request):
                             {'user_form': user_form,
                              'profile_form': profile_form,
                              'registered': registered})
+
+def user_login(request):
+       
+
+        # If HTTP POST, pull out form data and process it.
+        if request.method == 'POST':
+                username = request.POST['username']
+                password = request.POST['password']
+
+                # Attempt to log the user in with the supplied credentials.
+                # A User object is returned if correct - None if not.
+                user = authenticate(username=username, password=password)
+
+                # A valid user logged in?
+                if user is not None:
+                        # Check if the account is active (can be used).
+                        # If so, log the user in and redirect them to the homepage.
+                        if user.is_active:
+                                login(request, user)
+                                return HttpResponseRedirect(reverse('index'))
+                        # The account is inactive; tell by adding variable to the template context.
+                        else:
+                                return HttpResponse("Your Rango account is disabled.")
+                # Invalid login details supplied!
+                else:
+                        
+                         return HttpResponse("Invalid login details supplied.")
+        # Not a HTTP POST - most likely a HTTP GET. In this case, we render the login form for the user.
+        else:
+               return render(request, 'rango/login.html', {})
+
+def some_view(request):
+     if not request.user.is_authenticated():
+            return HttpResponse("You are logged in.")
+     else:
+           return HttpResponse("You are not logged in.")
+
+@login_required
+def restricted(request):
+       return HttpResponse("Since you're logged in, you can see this text!")
+
+@login_required
+def user_logout(request):
+      logout(request)
+      return HttpResponseRedirect(reverse('index'))

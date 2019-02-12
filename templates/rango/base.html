@@ -30,12 +30,14 @@
                     <a href="/rango/logout/">Logout</a>
                    {% else %}
                     <a href="/rango/register/">Register</a>|
+                   
                     <a href="/rango/login/">Login</a>
                    {% endif %}
                </p>
                <ul class="nav">
                    {% if user.is_authenticated %}
                     <li><a href="{% url 'register' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Login</a><li>
                     <li><a href="/rango/add_category/">Add Category</a></li>
                    {% endif %}
                    <li><a href="/rango/about/">About</a></li>
