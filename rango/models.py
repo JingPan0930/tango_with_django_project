@@ -6,7 +6,17 @@ class Category(models.Model):
     views = models.IntegerField(default = 0)
     likes = models.IntegerField(default = 0)
 
-    def __unicode__(self):
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):  # what does *args, **kwargs do here?
+        self.slug = slugify(self.name)
+        #  super(Category, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+    def __str__(self):
         return self.name
 
 class Page(models.Model):
