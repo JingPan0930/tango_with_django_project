@@ -22,9 +22,14 @@ urlpatterns = [
     url(r'^like_ad/$', views.like_ad, name='like_ad'),
     url(r'^suggest/$', views.suggest_category, name='suggest_category'),
     url(r'^comment/', views.comment,name='comment'),
-url(r'^preview/', views.preview,name='preview'),
-url(r'^refreshcomment/', views.refreshcomment,name='refreshcomment'),
-url(r'^search/$', view =views.SearchView.as_view(),name='search'),
+	url(r'^preview/', views.preview,name='preview'),
+	url(r'^refreshcomment/', views.refreshcomment,name='refreshcomment'),
+	url(r'^search/$', view =views.SearchView.as_view(),name='search'),
+	url(r'^mydetail/$', views.mydetail, name='mydetail'),
+    url(r'^myfavourite/$', views.myfavourite, name='myfavourite'),
+    url(r'^mypost/$', views.mypost, name='mypost'),
+    url(r'^myinformation/$', views.myinformation, name='myinformation'),
+	url(r'^accounts/', include('registration.backends.simple.urls')),
     # tets
     # url(r'^ad_images/(?P<path>.*)', 'django.views.static.serve', {'document_root':'E:\\workspace\\tango_with_django_project'}),
 ]

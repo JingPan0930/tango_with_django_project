@@ -1,0 +1,264 @@
+{% extends 'rango/base_bootstrap_showitem_1.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+show item
+{% endblock %}
+<style type="text/css">
+  
+
+
+hr {
+    border-top: 1px solid #007bff;
+    width:70%;
+}
+
+a {color: #000;}
+
+
+.card{
+    background-color: #FFFFFF;
+    padding:0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius:4px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+
+.card:hover{
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+    color:black;
+}
+
+address{
+  margin-bottom: 0px;
+}
+
+
+
+
+#author a{
+  color: #fff;
+  text-decoration: none;
+    
+}
+</style>
+{% block body_block %}
+
+<br>
+<br>
+<br>
+<h1>My Post</h1>
+<h3><a href="{% url 'mydetail' %}">Back</a></h3>
+
+    
+
+
+{% for line in ad_list %}
+
+    <div class="col-md-4 mt-5">
+      <div class="card text-center">
+        <img class="card-img-top" src="/media/{{ line.image }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ line.title }}</h5>
+          <hr>
+          <h6>{{ line.description }}</h6>
+          <p>
+             <a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ line.location }}"
+                                
+                                value="{{ line.title }}"><button type="button" class="btn btn-info"><i class="far fa-eye"></i>Take a look！</button></a>
+            
+              
+            </a>
+          </p>
+          <div class="collapse" id="{{line.title}}">   <!-- id="collapseExample" -->
+            <div class="card card-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+
+
+  </div>
+</div>
+
+<br>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ </div>
+
+
+
+<div class="container" >
+<div class="footer">
+      <div class="wrap">  
+       <div class="section group">
+        <div class="col_1_of_4 span_1_of_4">
+            <h4>Information</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Advanced Search</a></li>
+            <li><a href="delivery.html">Orders and Returns</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Why buy from us</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="contact.html">Site Map</a></li>
+            <li><a href="#">Search Terms</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>My account</h4>
+            <ul>
+              <li><a href="contact.html">Sign In</a></li>
+              <li><a href="index.html">View Cart</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="contact.html">Help</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Contact</h4>
+            <ul>
+              <li><span>+91-123-456789</span></li>
+              <li><span>+00-123-000000</span></li>
+            </ul>
+            <div class="social-icons">
+              <h4>Follow Us</h4>
+                  <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-skype"></i> </a></li>
+                    <li><a href="#" target="_blank"> <i class="fab fa-dribbble"></i></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <div class="clear"></div>
+                 </ul>
+              </div>
+        </div>
+      </div>      
+        </div>
+    </div>
+
+<!-- <div class="block">
+  
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse"></span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+  
+  <div class="middle">
+    {% for line in ad_list %}
+    <img src="/media/{{ line.image }}" alt="pic" />
+  </div>
+  
+  <div class="bottom">
+    <div class="heading">{{ line.title }}</div>
+    <div class="info">{{line.description}}</div>
+    <div class="style"></div>
+    <div class="price">{{line.price}} <span class="old-price">$75.00</span></div>
+      {% for con in contect_list %}
+    <a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ con.location }}"
+    value="{{ line.title }}"><button type="button" class="btn btn-info">{{ line.title }}</button></a>
+        {% endfor %}
+  </div>
+   {% endfor %}
+</div> -->
+<!-- <div class="block"> -->
+  
+<!--   <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div> -->
+<!--   
+  <div class="middle">
+    <img src="https://www.converse.com/on/demandware.static/-/Sites-ConverseMaster/default/dw33d36cdd/images/hi-res/654210C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+  
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+All Star Neon Floral Yth/Jr</div>
+    <div class="info">Neon converse edition</div>
+    <div class="style">Color: Black/White/Aegean Aqua / Style: 654210C</div>
+    <div class="price">$35.00 <span class="old-price">$45.00</span></div>
+  </div> -->
+  
+<!-- </div> -->
+<!-- <div class="block">
+  
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+  
+  <div class="middle">
+    <img src="http://demandware.edgesuite.net/aalw_prd/on/demandware.static/-/Sites-ConverseMaster/default/dw183dd1f7/images/hi-res/M8437C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+  
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+Stars and Bars</div>
+    <div class="info">Fresh converse edition</div>
+    <div class="style">Color: Stars & Bars / Style: M8437C</div>
+    <div class="price">$50.00</div>
+  </div>
+  
+</div>
+<div class="block">
+  
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+  
+  <div class="middle">
+    <img src="https://www.converse.com/on/demandware.static/-/Sites-ConverseMaster/default/dwec469ff7/images/hi-res/151116C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+  
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+All Star II Neon</div>
+    <div class="info">Neon converse edition</div>
+    <div class="style">Color: Teal/Navy/White / Style: 151116C</div>
+    <div class="price">$34.00 <span class="old-price">$50.00</span></div>
+  </div> -->
+  
+<!-- </div>
+ -->
+
+{% endblock %}

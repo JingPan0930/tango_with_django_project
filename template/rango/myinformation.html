@@ -1,0 +1,40 @@
+{% extends 'rango/base_bootstrap_showitem_1.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+	    Index
+	{% endblock %}
+	{% block body_block %}    
+    	 <br>
+<br>
+<br>
+        <h1>My information</h1> 
+         <br><br>
+       <h2>Hi {{ user.username }}!</h2>
+       <br>
+       <h2>Your registed E-mail is <br><br>{{ user.email}}</h2>
+       
+       
+
+	<div class="menu l-rounded">
+	<ul>
+		<li>
+			<a href="/accounts/password/change/" class="icon fa fa-rocket">
+				<span>Edit</span>
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'mydetail' %}" class="icon fa fa-truck">
+				<span>Back</span>
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'myinformation' %}" class="icon fa fa-cloud">
+				<span>Refresh</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+       
+</html>
+	{% endblock %}

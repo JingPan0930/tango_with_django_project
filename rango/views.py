@@ -13,6 +13,7 @@ from django.contrib.auth import logout
 from datetime import datetime
 from registration.backends.simple.views import RegistrationView
 from django import views
+from django.contrib.auth.models import User
 
 # Create your views here.
 def get_server_side_cookie(request, cookie, default_val=None):
@@ -462,6 +463,51 @@ def register_profile(request):
     context_dict = {'form': form}
 
     return render(request, 'rango/profile_registration.html', context_dict)
+	
+def mydetail(request):
+    request.session.set_test_cookie()
+    visitor_cookie_handler(request)
+    response = render(request, 'rango/mydetail.html')
+    return response
+
+@login_required
+def myfavourite(request):
+    from rango import models
+    request.session.set_test_cookie()
+    visitor_cookie_handler(request)
+    email = request.user.email
+    ad_list = models.PostAd.objects.filter(email = email)
+    slide= models.PostAd.objects.order_by('likes')[:1]
+    response = render(request,'rango/myfavourite.html',
+                      {"ad_list": ad_list,"slide":slide})
+    return response
+
+
+@login_required
+def mypost(request):
+    from rango import models
+    request.session.set_test_cookie()
+    visitor_cookie_handler(request)
+    email = request.user.email
+    print (email)
+    print("-----------")
+    print(request.user)
+    ad_list = models.PostAd.objects.filter(email = email)
+    slide= models.PostAd.objects.order_by('title')[:1]
+    response = render(request,'rango/mypost.html',
+                      {"ad_list": ad_list,"slide":slide})
+    return response
+
+
+@login_required
+def myinformation(request):
+    from rango import models
+    request.session.set_test_cookie()
+    visitor_cookie_handler(request)
+    
+    
+    response = render(request,'rango/myinformation.html')
+    return response
 
 
 class RangoRegistrationView(RegistrationView):

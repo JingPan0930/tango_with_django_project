@@ -1,0 +1,170 @@
+{% extends 'rango/base_bootstrap_showitem_1.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+show item
+{% endblock %}
+<style type="text/css">
+
+<!------ Include the above in your HEAD tag ---------->
+hr {
+    border-top: 1px solid #007bff;
+    width:70%;
+}
+
+a {color: #000;}
+
+
+.card{
+    background-color: #FFFFFF;
+    padding:0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius:4px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+
+.card:hover{
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+    color:black;
+}
+
+address{
+  margin-bottom: 0px;
+}
+
+
+
+
+#author a{
+  color: #fff;
+  text-decoration: none;
+    
+}
+</style>
+{% block body_block %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<div>
+<br>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<body>
+    <section class="team-area pb-100 pt-100" id="team">
+    <h1><span>My detail</span></h1>
+         <div class="container">
+            <div class="row section-title">
+               <div class="col-md-6 text-right">
+               </div>
+               <div class="col-md-6">
+                  <p><h2>Hi {{ user.username }}!</h2><br><h5>come and check your footprints here</h4></p>
+               </div>
+            </div>
+            <h3>&emsp;&emsp;My Favourite &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;     My Post  &ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    My Information</h3>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="single-team">
+                     <img src="{% static "images/Myfavourite.jpg" %}" alt="my favourite">
+                     <div class="team-hover">
+                        <div class="team-content">
+                           <h3><a href="{% url 'myfavourite' %}">My Favourite</a><br><h4><span>view your collection</span></h4></h3>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="single-team">
+                     <img src="{% static "images/bbig9_2.jpg" %}" alt="my post">
+                     <div class="team-hover">
+                        <div class="team-content">
+                           <h3><a href="{% url 'mypost' %}">My Post</a><br><h4><span>see your contribution</span></h4></h3>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="single-team">
+                     <img src="{% static "images/information.jpg" %}" alt=" my information">
+                     <div class="team-hover">
+                        <div class="team-content">
+                           <h3><a href="{% url 'myinformation' %}">My Information</a><br><h4><span>check your information</span></h4></h3>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+</body>        
+        
+        
+        
+        
+        
+        
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<div class="container" >
+
+<div class="footer">
+      <div class="wrap">  
+       <div class="section group">
+        <div class="col_1_of_4 span_1_of_4">
+            <h4>Information</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Advanced Search</a></li>
+            <li><a href="delivery.html">Orders and Returns</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Why buy from us</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="contact.html">Site Map</a></li>
+            <li><a href="#">Search Terms</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>My account</h4>
+            <ul>
+              <li><a href="contact.html">Sign In</a></li>
+              <li><a href="index.html">View Cart</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="contact.html">Help</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Contact</h4>
+            <ul>
+              <li><span>+91-123-456789</span></li>
+              <li><span>+00-123-000000</span></li>
+            </ul>
+            <div class="social-icons">
+              <h4>Follow Us</h4>
+                  <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-skype"></i> </a></li>
+                    <li><a href="#" target="_blank"> <i class="fab fa-dribbble"></i></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <div class="clear"></div>
+                 </ul>
+              </div>
+        </div>
+      </div>      
+        </div>
+    </div>
+
+
+
+ -->
+
+{% endblock %}

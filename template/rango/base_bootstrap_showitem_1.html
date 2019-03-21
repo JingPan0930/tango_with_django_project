@@ -2,7 +2,7 @@
 <html lang="en">
 {% load staticfiles %}
 
- 
+
   <!-- ======================================font awsome =================== -->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -15,10 +15,26 @@
   <head>
 
 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="{% static 'css/style-showitem.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/style-item.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/mydetail.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/botton.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{% static 'css/changepassword.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="//maxcdn.bootstrapcdn.com/beotstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/startstop-slider.js' %}"></script>
 
-
-{% block head %}{% endblock %}
 
 
 
@@ -39,7 +55,7 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"crossorigin="an
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
- 
+
       <title>Rango - {% block title %}How to Tango with Django!{% endblock %}</title>
       <!-- Bootstrap core CSS -->
     <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,38 +68,49 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"crossorigin="an
   <body>
 
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'index' %}">Rango</a>
+    </a>
+    <a class="navbar-brand" href="{% url 'index' %}">UoG Second Hand Trade</a>
 
-      <div class="collapse navbar-collapse" id="navbar">
+
+    <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-        {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'mydetail' %}">Add a New Category</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}" style="font-size:15px" size="15">Home</a>
             </li>
 
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'adpost' %}" style="font-size:15px" size="15"
+                    >I want to sell</a>
+                </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/">Logout</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'registration_register' %}">Register Here</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'auth_login' %}">Login</a>
-            </li>
-        {% endif %}
+                    <a class="nav-link" href="{% url 'showitem' %}" style="font-size:15px" size="15"
+                    >I want to buy</a>
+                </li>
+                <!--mydetails这个地方方连接到个人信息的页面-->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mydetail' %}" style="font-size:15px"
+                       size="15">My Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/" style="font-size:15px" size="15">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registration_register' %}" style="font-size:15px" size="15">Register
+                        Here</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth_login' %}" style="font-size:15px" size="15">Login</a>
+                </li>
+            {% endif %}
         </ul>
-      </div>
-    </nav>
+
+    </div>
+</nav>
 
     <div class="container-fluid">
       <div class="row">
@@ -130,6 +157,7 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"crossorigin="an
     <script src="{% static "js/rango-ajax.js" %}"></script>
     <script src="{% static "js/rango-jquery.js" %}"></script>
     <script src="{% static "js/postad.js" %}"></script>
+    <script src="{% static "js/changepassword.js" %}"></script>
 
   </body>
 </html>
