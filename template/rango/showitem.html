@@ -1,0 +1,464 @@
+{% extends 'rango/base_bootstrap_showitem.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+show item
+{% endblock %}
+<style type="text/css">
+
+
+
+hr {
+    border-top: 1px solid #007bff;
+    width:70%;
+}
+
+a {color: #000;}
+
+
+.card{
+    background-color: #FFFFFF;
+    padding:0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius:4px;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+
+.card:hover{
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+    color:black;
+}
+
+address{
+  margin-bottom: 0px;
+}
+
+
+
+
+#author a{
+  color: #fff;
+  text-decoration: none;
+
+}
+</style>
+{% block body_block %}
+<!-- <div>
+    <table border="1">
+
+        <tbody>
+
+        {% for line,con in combine_list %}
+
+        <div class="collapse navbar-collapse" >
+        <tr>
+            <td id="tdtitle"><a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ con.location }}"
+                                value="{{ line.title }}">{{ line.title }}</a></td>
+            <td id="tddes">{{ line.description }}</td>
+            <td><img src="/media/{{ line.image }}"> "/media/{{ line.image }}"</td>
+
+            <td id="tdloc">{{ con.location }}</td>
+
+
+        </tr>
+        </div>
+
+
+        {% endfor %}
+        </tbody>
+
+
+    </table>
+
+
+</div> -->
+
+<div class="container" >
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+           <ul class="breadcrumb">
+        <li>
+           <a href="{% url 'index' %}">Home</a>
+        </li>
+        <li>
+           <a href="{% url 'showitem' %}">Showitem</a>
+        </li>
+
+      </ul>
+          <div class="warp">
+         <div class="header">
+        <div class="header_slide">
+
+
+            <div class="header_bottom_left">
+        <div class="categories">
+          <ul>
+
+            <h3>Products</h3>
+              <!-- <li><a href="#">Mobile Phones</a></li>
+              <li><a href="#">Desktop</a></li>
+              <li><a href="#">Laptop</a></li>
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">Software</a></li>
+               <li><a href="#">Sports &amp; Fitness</a></li>
+               <li><a href="#">Footwear</a></li>
+               <li><a href="#">Jewellery</a></li>
+               <li><a href="#">Clothing</a></li>
+               <li><a href="#">Home Decor &amp; Kitchen</a></li>
+               <li><a href="#">Beauty &amp; Healthcare</a></li>
+               <li><a href="#">Toys, Kids &amp; Babies</a></li> -->
+ {% for line in ad_list %}
+               <ul class="nav nav-pills">
+        <li >
+           <a href="#prod"> <span class="badge pull-right">{{ line.likes}}</span> {{line.title}}</a> {% endfor %}
+        </li>
+        <li>
+           <a href="#"> <span class="badge pull-right">16</span> More</a>
+        </li>
+      </ul>
+
+          </ul>
+        </div>
+           </div>
+
+
+           <div class="header_bottom_right" style   = "width:75%"
+             <div class="slider">
+           >
+               <div id="slider">
+
+                          <div id="mover">
+
+                            <div id="slide-1" class="slide">
+                   <div class="slider-img">
+                       <a href="#prod"><img src="{% static 'images/car.jpg' %}" alt="learn more" /></a>
+                    </div>
+                          <div class="slider-text">
+                                     <h1>Clearance<br><span>SALE</span></h1>
+                                     <h2>UPTo 20% OFF</h2>
+                     <div class="features_list">
+                      <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
+                          </div>
+                           <a href="#prod"class="button">Shop Now</a>
+                             </div>
+                    <div class="clear"></div>
+                          </div>
+
+
+                          <div class="slide">
+                            <div class="slider-text">
+                                     <h1>Clearance<br><span>SALE</span></h1>
+                                     <h2>UPTo 40% OFF</h2>
+                     <div class="features_list">
+                      <h4>Get to Know More About Our Memorable Services</h4>
+                          </div>
+                           <a href="#prod" class="button">Shop Now</a>
+                             </div>
+                           <div class="slider-img">
+                       <a href="#prod"><img src="{% static 'images/pc.jpg' %}" alt="learn more" /></a>
+                    </div>
+                    <div class="clear"></div>
+                          </div>
+                          <div class="slide">
+                            <div class="slider-img">
+                       <a href="#prod"><img src="{% static 'images/bike.jpg' %}" alt="learn more" /></a>
+                    </div>
+                    <div class="slider-text">
+                                     <h1>Clearance<br><span>SALE</span></h1>
+                                     <h2>UPTo 10% OFF</h2>
+                     <div class="features_list">
+                      <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
+                          </div>
+                           <a href="#prod" class="button">Shop Now</a>
+                             </div>
+                    <div class="clear"></div>
+                          </div>
+                       </div>
+                    </div>
+           <div class="clear"></div>
+             </div>
+          </div>
+       <div class="clear"></div>
+    </div>
+</div>
+</div>
+
+
+<div class="main">
+<div class="content">
+
+  <div class="content_top" id="prod">
+        <div class="heading">
+        <h3>New Products</h3>
+        </div>
+        <div class="see">
+          <p><a href=".">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+      </div>
+</div>
+
+            <div class="row" >
+             <!-- {% for line in ad_list %}
+                <div class="col-md-4" style="width:100%;height:100%">
+                    <div class="thumbnail" style="width:100%;height:100%">
+    <ul>
+
+      <li><span class="converse"><i class="fa fa-shopping-basket" aria-hidden="true"></i>{{line.title}}</span></li>
+
+    </ul>
+                        <div id="showimg" ><img  src="/media/{{ line.image }}" width="100%" height="200" /></div>
+
+                        <div class="caption" style="width:100%;height:100%">
+
+                           <div class="heading" align="center">{{ line.title }}</div>
+                           </br>
+                           <div class="info" >{{line.description}}</div>
+                            <div class="price" style="" >${{line.price}} <span style="color: red;">$75.00</span></div>
+
+                            <p>
+
+                                 <a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ line.location }}"
+
+                                value="{{ line.title }}"><button type="button" class="btn btn-info"><i class="far fa-eye"></i>Take a look！</button></a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} -->
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<div class="container-fluid">
+  <div class="row">
+
+
+
+
+
+{% for line in ad_list %}
+
+    <div class="col-md-4 mt-5">
+      <div class="card text-center">
+        <img class="card-img-top" src="/media/{{ line.image }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ line.title }}</h5>
+          <hr>
+          <h6>{{ line.description }}</h6>
+          <div class="price"  >${{line.price}} <span class='old-price' style="color: red;">$75.00</span></div>
+          <p>
+             <a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ line.location }}"
+
+                                value="{{ line.title }}"><button type="button" class="btn btn-info"><i class="far fa-eye"></i>Take a look！</button></a>
+            <a class="btn btn-primary" data-toggle="collapse" href="#{{line.title}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-map" ></i> Maps
+            </a>
+          </p>
+          <div class="collapse" id="{{line.title}}">   <!-- id="collapseExample" -->
+            <div class="card card-body">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2237.8660937574095!2d-4.271258584597274!3d55.88233738058822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488844378eeecf9d%3A0xa4ee1a23285fa71e!2sFirhill+Rd%2C+Glasgow+G20+7BB!5e0!3m2!1szh-CN!2suk!4v1552989063620"  width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col">
+              <a href=""><i class="fas fa-map"></i></a>
+            </div>
+            <div class="col">
+              <a href="mailto:{{ line.email }}"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="col">
+              <a href="tel:+{{line.phone}}"><i class="fas fa-phone"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
+
+
+  </div>
+</div>
+
+<br>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ </div>
+
+
+
+
+<div class="footer">
+      <div class="wrap">
+       <div class="section group">
+        <div class="col_1_of_4 span_1_of_4">
+            <h4>Information</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Advanced Search</a></li>
+            <li><a href="delivery.html">Orders and Returns</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Why buy from us</h4>
+            <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Customer Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="contact.html">Site Map</a></li>
+            <li><a href="#">Search Terms</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>My account</h4>
+            <ul>
+              <li><a href="contact.html">Sign In</a></li>
+              <li><a href="index.html">View Cart</a></li>
+              <li><a href="#">My Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="contact.html">Help</a></li>
+            </ul>
+        </div>
+        <div class="col_1_of_4 span_1_of_4">
+          <h4>Contact</h4>
+            <ul>
+              <li><span>+91-123-456789</span></li>
+              <li><span>+00-123-000000</span></li>
+            </ul>
+            <div class="social-icons">
+              <h4>Follow Us</h4>
+                  <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-skype"></i> </a></li>
+                    <li><a href="#" target="_blank"> <i class="fab fa-dribbble"></i></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <div class="clear"></div>
+                 </ul>
+              </div>
+        </div>
+      </div>
+        </div>
+    </div>
+
+<!-- <div class="block">
+
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse"></span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+
+  <div class="middle">
+    {% for line in ad_list %}
+    <img src="/media/{{ line.image }}" alt="pic" />
+  </div>
+
+  <div class="bottom">
+    <div class="heading">{{ line.title }}</div>
+    <div class="info">{{line.description}}</div>
+    <div class="style"></div>
+    <div class="price">{{line.price}} <span class="old-price">$75.00</span></div>
+      {% for con in contect_list %}
+    <a class="btn-link" href="/rango/item?title={{ line.title }}&location={{ con.location }}"
+    value="{{ line.title }}"><button type="button" class="btn btn-info">{{ line.title }}</button></a>
+        {% endfor %}
+  </div>
+   {% endfor %}
+</div> -->
+<!-- <div class="block"> -->
+
+<!--   <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div> -->
+<!--
+  <div class="middle">
+    <img src="https://www.converse.com/on/demandware.static/-/Sites-ConverseMaster/default/dw33d36cdd/images/hi-res/654210C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+All Star Neon Floral Yth/Jr</div>
+    <div class="info">Neon converse edition</div>
+    <div class="style">Color: Black/White/Aegean Aqua / Style: 654210C</div>
+    <div class="price">$35.00 <span class="old-price">$45.00</span></div>
+  </div> -->
+
+<!-- </div> -->
+<!-- <div class="block">
+
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+
+  <div class="middle">
+    <img src="http://demandware.edgesuite.net/aalw_prd/on/demandware.static/-/Sites-ConverseMaster/default/dw183dd1f7/images/hi-res/M8437C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+Stars and Bars</div>
+    <div class="info">Fresh converse edition</div>
+    <div class="style">Color: Stars & Bars / Style: M8437C</div>
+    <div class="price">$50.00</div>
+  </div>
+
+</div>
+<div class="block">
+
+  <div class="top">
+    <ul>
+      <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+      <li><span class="converse">Converse</span></li>
+      <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+
+  <div class="middle">
+    <img src="https://www.converse.com/on/demandware.static/-/Sites-ConverseMaster/default/dwec469ff7/images/hi-res/151116C_standard.jpg?sw=580&sh=580&sm=fit" alt="pic" />
+  </div>
+
+  <div class="bottom">
+    <div class="heading">Chuck Taylor
+All Star II Neon</div>
+    <div class="info">Neon converse edition</div>
+    <div class="style">Color: Teal/Navy/White / Style: 151116C</div>
+    <div class="price">$34.00 <span class="old-price">$50.00</span></div>
+  </div> -->
+
+<!-- </div>
+ -->
+
+{% endblock %}

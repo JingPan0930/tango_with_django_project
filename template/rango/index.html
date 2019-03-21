@@ -1,0 +1,143 @@
+	{% extends 'rango/base_bootstrap.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+	    Index
+	{% endblock %}
+	{% block body_block %}
+
+	<link href="{% static 'css/style-showitem.css' %}" rel="stylesheet" type="text/css" media="all"/>
+
+
+
+		<div class="jumbotron"
+             style="background-image:url(\{% static 'images/back.jpg' %});
+             background-repeat:no-repeat;background-size:cover"
+             width="100%" >
+        <h1 class="display-3">
+            <font size="30" color="white">
+                Welcome to UoG Second Hand Trade</font></h1>
+
+			{% if user.is_authenticated %}
+			<span style="margin-left:30px;font-size:30px"><!--#修改字体-->
+                <font size="18" color="white">Hello ! {{ user.username }}!</font>
+			</span>
+			{% else %}
+            <font size="30" color="white">
+                Welcome !Please Sign Up!Enjoy your trade!!!</font>
+
+			{% endif %}
+		</div>
+	<!--#我是买家，这里直接跳转买家页面-->
+  <div id="da"  style="width:1100px; height:300px;position: relative;top: 50px;">
+		<div class="row marketing">
+			<div class="col-lg-6"
+           style="background-image:url(\{% static 'images/buy.jpg' %});
+             background-repeat:no-repeat;background-position:right;background-size:contain;position: relative;left: 250px;" >
+                <button type="submit" class="btn btn-default"
+                        style="margin-left:50px;font-size:50px" onclick="buy()">
+                      <span><nbsq>BUY</nbsq></span>
+                    </button>
+                <script>
+                function buy(){
+            window.location.href="{% url 'showitem' %}";}
+                </script>
+
+				<!--#我是买家，这里合并的时候直接跳转商品-->
+		<!--#我是卖家，这里直接跳转卖家页面-->
+				<div class="col-lg-6"
+                style="background-image:url(\{% static 'images/sell.jpg' %});
+             background-repeat:no-repeat;background-position:right;background-size:contain;">
+                    <button type="submit" class="btn btn-default"
+                        style="margin-right:50px;font-size:50px" onclick="tz()">
+                        SELL
+                    </button>
+                <script>
+                function tz(){
+            window.location.href="{% url 'adpost' %}";}
+                </script>
+								</div>
+
+								</div>
+						<!--#我是买家，这里合并的时候直接跳转发产品-->
+					<!--#这里需要放产品-->
+				</div>
+            </div>
+</div>
+
+</div>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--#主要的产品展示-->
+<div class="footer" style="bottom: 0;background-color: #FFFFFF!important;
+color: #000000;width: 100%;z-index: 1030;border-radius: 4px;padding: 5px 0;">
+		 <div class="wrap">
+			<div class="section group">
+			 <div class="col_1_of_4 span_1_of_4">
+					 <h4>Information</h4>
+					 <ul>
+					 <li><a href="about.html">About Us</a></li>
+					 <li><a href="contact.html">Customer Service</a></li>
+					 <li><a href="#">Advanced Search</a></li>
+					 <li><a href="delivery.html">Orders and Returns</a></li>
+					 <li><a href="contact.html">Contact Us</a></li>
+					 </ul>
+				 </div>
+			 <div class="col_1_of_4 span_1_of_4">
+				 <h4>Why buy from us</h4>
+					 <ul>
+					 <li><a href="about.html">About Us</a></li>
+					 <li><a href="contact.html">Customer Service</a></li>
+					 <li><a href="#">Privacy Policy</a></li>
+					 <li><a href="contact.html">Site Map</a></li>
+					 <li><a href="#">Search Terms</a></li>
+					 </ul>
+			 </div>
+			 <div class="col_1_of_4 span_1_of_4">
+				 <h4>My account</h4>
+					 <ul>
+						 <li><a href="contact.html">Sign In</a></li>
+						 <li><a href="index.html">View Cart</a></li>
+						 <li><a href="#">My Wishlist</a></li>
+						 <li><a href="#">Track My Order</a></li>
+						 <li><a href="contact.html">Help</a></li>
+					 </ul>
+			 </div>
+			 <div class="col_1_of_4 span_1_of_4">
+				 <h4>Contact</h4>
+					 <ul>
+						 <li><span>+91-123-456789</span></li>
+						 <li><span>+00-123-000000</span></li>
+					 </ul>
+					 <div class="social-icons">
+						 <h4>Follow Us</h4>
+								 <ul>
+									 <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+									 <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+									 <li><a href="#" target="_blank"><i class="fab fa-skype"></i> </a></li>
+									 <li><a href="#" target="_blank"> <i class="fab fa-dribbble"></i></li>
+									 <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+									 <div class="clear"></div>
+								</ul>
+						 </div>
+			 </div>
+		 </div>
+			 </div>
+	 </div>
+
+
+	 <script src="https://staff.bootcss.com/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	 <script src="https://staff.bootcss.com/npm/handlebars@3.0.3/dist/handlebars.min.js"></script>
+
+	 <script type="text/javascript" src="/assets/js/index.js?v=9e0a081675"></script>
+
+
+
+    {% endblock %}
+	<!--#这里需要放产品
+        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />-->

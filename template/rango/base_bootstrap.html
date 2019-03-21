@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js">
+    <
+    script
+    src = "{% static "js/rango-jquery.js" %}" ></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style-map.css' %}">
+<!-- ======================================font awsome =================== -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- ======================================= -->
+<!--   <script src="{% static "js/map.js" %}"></script> -->
+
+
+{% load rango_template_tags %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style-item.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- ================================ -->
+    <!-- for postad -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/postad.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- ============================================== -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> UoG Second Hand Trade- {% block title %}How to Tango with Django!{% endblock %}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+</head>
+
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+        <span class="navbar-toggler-icon"></span>
+    </a>
+    <a class="navbar-brand" href="{% url 'index' %}">UoG Second Hand Trade</a>
+
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}" style="font-size:15px" size="15">Home</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'adpost' %}" style="font-size:15px" size="15"
+                    >I want to sell</a>
+                </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showitem' %}" style="font-size:15px" size="15"
+                    >I want to buy</a>
+                </li>
+                <!--mydetails这个地方方连接到个人信息的页面-->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_category' %}" style="font-size:15px"
+                       size="15">My Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/" style="font-size:15px" size="15">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registration_register' %}" style="font-size:15px" size="15">Register
+                        Here</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth_login' %}" style="font-size:15px" size="15">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="sidebar-nav">
+                <form action="{% url 'search' %}" method="get">
+
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item" style="margin-right:20px;font-size:20px">
+                            Type to find a category
+                        </li>
+                        <li class="nav-item" style="margin-right:15px;font-size:15px">
+                            <label for="suggestion"></label><input style="margin-right:15px;font-size:15px"
+                                                                   class="search-query form-control" type="text"
+                                                                   name="suggestion" value="" id="suggestion"
+                                                                   style="font-size:50px" size="50">
+                        </li>
+                    </ul>
+
+                    <button type="submit" class="btn btn-default"
+                            style="margin-right:30px;font-size:30px">
+                        Research
+                    </button>
+                </form>
+            </ul>
+            </ul>
+            <hr/>
+        </div>
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+            {% block body_block %}{% endblock %}
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"
+        integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
+        crossorigin="anonymous"></script>
+<!--
+   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+        crossorigin="anonymous"></script>
+<script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--
+<script src="http://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+-->
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="{% static "js/rango-ajax.js" %}"></script>
+<script src="{% static "js/rango-jquery.js" %}"></script>
+<script src="{% static "js/postad.js" %}"></script>
+
+  </body>
+
+
+ 
+
+
+    <script src="https://staff.bootcss.com/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://staff.bootcss.com/npm/handlebars@3.0.3/dist/handlebars.min.js"></script>
+
+    <script type="text/javascript" src="/assets/js/index.js?v=9e0a081675"></script>
+
+
+
+</html>

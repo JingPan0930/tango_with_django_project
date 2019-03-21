@@ -1,0 +1,173 @@
+{% extends 'rango/base_bootstrap.html' %}
+{% load staticfiles %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/script.js/2.5.9/script.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  {% load rango_template_tags %}
+
+  <link href="{% static 'css/style-showitem.css' %}" rel="stylesheet" type="text/css" media="all"/>
+{% block title_block %}
+comment
+{% endblock %}
+
+
+{% block body_block %}
+<div>
+    {% for object in mes_list%}
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+
+</div><!-- /col-sm-12 -->
+</div><!-- /row -->
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+
+<div class="col-sm-9">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>{{ object.name }} </strong> <span color=‘yellow’>{{object.email}} </span> <span class="text-muted">says</span>
+</div>
+<div class="panel-body">
+<font size='2' face='Calibri' >{{ object.message|striptags }}</font>
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+
+
+{% endfor %}
+</div>
+
+<h3><srtong style="color:blue">Write Your message:</h3>
+              <!--  <div>
+                               {% for object in mes_list%}
+
+
+                                       <hr>
+                                        <p>
+                                            <strong style="color: pink">
+                                                {{ object.name }}
+                                                {{object.email}}
+                                            </strong>
+                                            Says:
+                                        </p>
+                                        <pre style="font-family: inherit; font-size: 1em;white-space: pre-wrap;word-wrap: break-word;">        {{ object.message }}
+                                        </pre>
+                                    {% endfor %}
+                                </div> -->
+
+
+                 <div>
+
+                           <form action="{% url 'comment'  %}"
+                                 method="post">
+                               {% csrf_token %}
+                               <div class="container-fluid">
+                                <div class="form-group input-group">
+                                 <div class="input-group-prepend">
+                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                  </div>
+
+                                 <input class="form-control" id="id_name" maxlength="30" name="name" type="text" placeholder="name" />
+
+
+                                      {{object.name}}
+                               </div>
+                               <div class="form-group input-group">
+                                   <div class="input-group-prepend">
+                                       <span class="input-group-text"> <i class="fas fa-envelope-square"></i> </span>
+                                    </div>
+
+                                   <input class="form-control" id="id_email" maxlength="30" name="email" type="email" placeholder="email" />
+                                      {{object.email}}
+                               </div>
+                               <div class="form-group input-group">
+                                   <div class="input-group-prepend">
+                                       <span class="input-group-text"> <i class="fas fa-phone"></i> </span>
+                                    </div>
+
+                                   <input class="form-control" id="id_phone" maxlength="30" name="phone" type="phone" placeholder="phone" />
+                                      {{object.phone}}
+                               </div>
+                               <!--<div class="form-group">
+                                <label for="message">
+                                    <strong>
+                                        make a comment:
+                                    </strong>
+                                </label>
+                                <input type="text" class="form-control" id="message" name="message" rows="2"/>
+                                {{object.message}}
+                            </div> -->
+                            <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container">
+
+  		<div class="row">
+      	<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script>
+            tinymce.init({
+                selector: "textarea",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            });
+    </script>
+
+
+
+
+  <hr>
+
+                <!-- the comment box -->
+                <div class="well" style = 'width:100%;'>
+                    <h4><i class="fa fa-paper-plane-o"></i> Leave a message:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control"  id="message"  name="message" rows="10"></textarea>
+                            {{object.message}}
+                        </div>
+                        <button type="submit"  class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+                    </form>
+                </div>
+</script>
+                <hr>
+
+
+
+            </div>
+
+
+
+	</div>
+
+	</div>
+</div>
+
+                              <!-- <button type="submit" class="btn btn-primary">submit</button> -->
+                           </form>
+
+                       </div>
+
+
+
+
+
+
+
+
+	{% endblock %}
+
+
+
+<!-- ====================================================================================== -->

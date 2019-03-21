@@ -1,0 +1,289 @@
+{% extends 'rango/base_bootstrap.html' %}
+{% load staticfiles %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% load crispy_forms_tags %}
+
+  {% load rango_template_tags %}
+
+{% block title_block %}
+item
+{% endblock %}
+
+<link rel="icon" href="{% static 'images/favicon.ico' %}">
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+
+<!-- ================================================================== -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<style type="text/css">
+
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+
+    #map {
+      height: 40%!important;
+      margin: auto 0!important;
+      width: 300px!important;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%!important;
+      margin: 0!important;
+      padding: 0!important;
+      margin-top:50px!important;
+    }
+    #floating-panel {
+      position: absolute!important;
+      top: 10px!important;
+      left: 25%!important;
+      z-index: 5!important;
+      background-color: #fff!important;
+      padding: 5px!important;
+      border: 1px solid #999!important;
+      text-align: center!important;
+      font-family: 'Roboto','sans-serif'!important;
+      line-height: 30px!important;
+      padding-left: 10px!important;
+    }
+    #image{
+
+       width: 800px!important;
+    height: 400px!important;
+    border: 1px solid #000!important;
+
+
+    }
+    #adimage{
+
+    width: 100%!important;
+    height: 100%!important;
+
+
+    }
+    #form{
+height: 50px!important;
+
+}
+
+
+
+</style>
+
+
+
+{% block body_block %}
+
+
+
+
+
+<!-- ====================================================================================== -->
+
+
+
+
+
+
+  <div class="container" style="height:100%!important; width: 100%!important;">
+      <div class="row clearfix"style="height:100%!important; width: 100%!important;">
+        <div class="col-md-12 column" style="height:100%!important; width: 100%!important;">
+          <ul class="breadcrumb">
+        <li>
+           <a href="{% url 'index' %}">Home</a>
+        </li>
+        <li>
+           <a href="{% url 'showitem' %}">Showitem</a>
+        </li>
+        {% for ad in ad_list %}
+        <li class="active">
+          {{ ad.title }}
+        </li>
+        {% endfor %}
+      </ul>
+          <div class="row clearfix" style="height:100%!important; width: 100%!important;">
+
+            <div class="col-md-8 column" style="margin: 0px!important">
+
+
+              <div class="carousel slide" id="carousel-195321">
+                <ol class="carousel-indicators">
+                  <li data-slide-to="0" data-target="#carousel-195321">
+                  </li>
+                  <li data-slide-to="1" data-target="#carousel-195321" class="active">
+                  </li>
+                  <li data-slide-to="2" data-target="#carousel-195321">
+                  </li>
+                </ol>
+                <div class="carousel-inner">
+                   {% for ad in ad_list %}
+                  <div class="item active" id="image" >
+                    <img alt="" src="/media/{{ ad.image }}"  style="height:350px!important; width: 100%!important;" />
+                    <div class="carousel-caption">
+                      <h4>
+                        {{ ad.description }}
+                      </h4>
+                    </div>
+                  </div>
+                  <!-- <div class="item">
+                    <img alt="" src="v3/default2.jpg" />
+                    <div class="carousel-caption">
+                      <h4>
+                        Third Thumbnail label
+                      </h4>
+                      <p>
+                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                      </p>
+                    </div>
+                  </div> -->
+                </div> <a class="left carousel-control" href="#carousel-195321" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-195321" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+              </div>
+
+              <div class="panel-group" id="panel-574473">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-574473" href="#panel-element-935286">title</a>
+                  </div>
+                  <div id="panel-element-935286" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      {{ ad.title }}
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <a class="panel-title" data-toggle="collapse" data-parent="#panel-574473" href="#panel-element-493984">description</a>
+                  </div>
+                  <div id="panel-element-493984" class="panel-collapse in">
+                    <div class="panel-body ">
+                    <p> {{ ad.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                     <a class="panel-title" data-toggle="collapse" data-parent="#panel-574473" href="#panel-element-493980">price</a>
+                  </div>
+                  <div id="panel-element-493980" class="panel-collapse in">
+                    <div class="panel-body">
+                     {{ ad.price }}
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+<div class="row" >
+
+
+
+
+</div><!-- /row -->
+
+                <!-- ------------------------------------------------------ -->
+
+
+<br>
+<br>
+<br>
+
+
+<button type="submit" class="btn btn-success"
+                        style="margin-right:150px;font-size:20px;" onclick="message()">
+                        Message
+                    </button>
+                <script>
+                function message(){
+            window.location.href="{% url 'comment' %}";}
+                </script>
+
+<!-- ----------------------------------------------------- -->
+              </div>
+
+            </div>
+
+<script>
+
+        function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          // center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        // function() {
+        //   geocodeAddress(geocoder, map);
+        // }
+
+        geocodeAddress(geocoder, map);
+         // document.getElementById('submit').addEventListener('click', function() {
+         //   geocodeAddress(geocoder, map);
+         // });
+      }
+
+        function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+
+
+
+
+
+</script>
+
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdK1s2hdJZYibJDz7HdxDX8zk99B1dtOg&callback=initMap">
+    </script>
+
+            <div class="col-md-4 column" style="height:100%; width: 99%;">
+                <div class="affix" style="height:100%; width: 99%;">
+                <div id="map" ></div>
+
+                 Postcode:
+               <input id="address" type="textbox" value={{ ad.location }}>
+                <address> <strong>Seller Profile</strong><br /><br /><a href="mailto:{{ ad.email }}"><strong>email: {{ ad.email }}</strong></a><br /> <abbr title="Phone"><strong>Phone number:</abbr> {{ ad.phone }}</strong></address>
+                <div>
+                <strong id="like_count_item">{{ ad.likes }}</strong> people like this item
+                {% if user.is_authenticated %}
+                <button id="likes_item" data-adid="{{ad.id}}" class="btn btn-primary btn-sm" type="button"><i class="fas fa-heart">Like</i></button>
+                  {% endif %}
+                </div>
+                </div>
+            </div>
+             {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+    <!-- ============================================================ -->
+    <div class="clear"></div>
+
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+{% endblock %}
